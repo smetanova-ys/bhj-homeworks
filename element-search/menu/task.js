@@ -1,8 +1,5 @@
 "use strict";
 
-let links = document.querySelectorAll(".menu__item");
-let arrLinks = Array.from(links);
-
 let arrMenu = Array.from(document.getElementsByClassName("menu__link"));
 let linksWithSub = [];
 for (let i = 0; i < arrMenu.length; i++) {
