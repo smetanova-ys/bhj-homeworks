@@ -3,15 +3,33 @@
 let links = document.querySelectorAll(".menu__item");
 let arrLinks = Array.from(links);
 
-let menuWithSub = document.querySelectorAll(".menu_sub");
-let arrMenuSub = Array.from(menuWithSub);
+let arrMenu = Array.from(document.getElementsByClassName("menu__link"));
+let linksWithSub = [];
+for (let i = 0; i < arrMenu.length; i++) {
+    if (arrMenu[i].getAttribute("href") == "") {
+        linksWithSub.push(arrMenu[i]);
+    }
+}
 
-for (let link of arrLinks) {
-    if (link.querySelector(".menu_sub")) {
-        link.querySelector(".menu__link").onclick = () => {
-            arrMenuSub.forEach(el => el.className = "menu menu_sub");
-            link.querySelector(".menu_sub").className = "menu menu_sub menu_active";
-            return false;
-        }
+let company = linksWithSub[0];
+let service = linksWithSub[1];
+
+company.onclick = () => {
+    let companySubmenu = company.parentElement.querySelector(".menu_sub");
+    if (companySubmenu.getAttribute("class") == "menu menu_sub") {
+        companySubmenu.setAttribute("class", "menu menu_sub menu_active");
+        return false;
+    } else {
+        companySubmenu.setAttribute("class", "menu menu_sub");
+    }
+}
+
+service.onclick = () => {
+    let serviceSubmenu = service.parentElement.querySelector(".menu_sub");
+    if (serviceSubmenu.getAttribute("class") == "menu menu_sub") {
+        serviceSubmenu.setAttribute("class", "menu menu_sub menu_active");
+        return false;
+    } else {
+        serviceSubmenu.setAttribute("class", "menu menu_sub");
     }
 }

@@ -22,7 +22,7 @@ right.item(0).onclick = () => {
 
 left.item(0).onclick = () => {
 
-    for (let i = arrSlider.length - 1; i < arrSlider.length; i--) {
+    for (let i = arrSlider.length - 1; i >= 0; i--) {
         if (arrSlider[i].getAttribute("class") == "slider__item slider__item_active") {
             arrSlider[i].classList.remove("slider__item_active");
             if (i === 0) {
