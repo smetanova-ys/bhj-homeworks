@@ -8,25 +8,16 @@ for (let i = 0; i < arrMenu.length; i++) {
     }
 }
 
-let company = linksWithSub[0];
-let service = linksWithSub[1];
+let subMenu;
 
-company.onclick = () => {
-    let companySubmenu = company.parentElement.querySelector(".menu_sub");
-    if (companySubmenu.getAttribute("class") == "menu menu_sub") {
-        companySubmenu.setAttribute("class", "menu menu_sub menu_active");
+for (let i = 0; i < linksWithSub.length; i++) {
+    linksWithSub[i].onclick = () => {
+        subMenu = linksWithSub[i].parentElement.querySelector(".menu_sub");
+        if (subMenu.getAttribute("class") == "menu menu_sub") {
+            subMenu.setAttribute("class", "menu menu_sub menu_active");
+        } else {
+            subMenu.setAttribute("class", "menu menu_sub");
+        }
         return false;
-    } else {
-        companySubmenu.setAttribute("class", "menu menu_sub");
-    }
-}
-
-service.onclick = () => {
-    let serviceSubmenu = service.parentElement.querySelector(".menu_sub");
-    if (serviceSubmenu.getAttribute("class") == "menu menu_sub") {
-        serviceSubmenu.setAttribute("class", "menu menu_sub menu_active");
-        return false;
-    } else {
-        serviceSubmenu.setAttribute("class", "menu menu_sub");
     }
 }
