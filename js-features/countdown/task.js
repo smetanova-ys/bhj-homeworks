@@ -5,9 +5,9 @@ function init () {
     timer.innerHTML = timer.innerHTML - 1;
 
     if (timer.innerHTML <= 0) {
-        timer.innerHTML = 0;
         alert("Вы победили в конкурсе!");
+        clearInterval(timerStart);
     }
 };
 
-setInterval(init, 1000);
+let timerStart = setInterval(init, 1000);
