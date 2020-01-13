@@ -16,7 +16,7 @@ function addTask(event) {
         <a href="#" class="task__remove">&times;</a>
     </div>`);
         for (let item of tasks) {
-            item.onclick = function(event) {
+            item.onclick = function (event) {
                 event.target.closest('.task').remove()
             };
         }
@@ -25,7 +25,7 @@ function addTask(event) {
 }
 
 tasksBtn.addEventListener('click', addTask);
-field.addEventListener('keydown', function(event) {
+field.addEventListener('keydown', function (event) {
     if (event.keyCode === 13) {
         tasksBtn.onclick;
     }
