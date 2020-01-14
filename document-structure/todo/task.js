@@ -27,6 +27,6 @@ function addTask(event) {
 tasksBtn.addEventListener('click', addTask);
 field.addEventListener('keydown', function (event) {
     if (event.keyCode === 13) {
-        tasksBtn.onclick;
+        addTask(event);
     }
 });

@@ -2,26 +2,24 @@
 
 let accentuatedPhrases = document.getElementsByClassName('has-tooltip');
 
-function showTip(event) {
-    event.preventDefault();
-    let accentuatedElement = event.target;
-    let tip = accentuatedElement.title;
-    let tooltip = document.createElement('div');
-    tooltip.setAttribute('class', 'tooltip');
-    tooltip.style.left = accentuatedElement.offsetLeft + 'px';
-    tooltip.style.top = accentuatedElement.offsetTop + 20 + 'px';
-    tooltip.style.position = 'absolute';
-    tooltip.textContent = tip;
-    accentuatedElement.insertAdjacentElement('afterend', tooltip);
+for (let phrase of accentuatedPhrases) {
+    phrase.insertAdjacentHTML('afterend', 
+    `<div class='tooltip'>${phrase.title}</div>`);
+    phrase.addEventListener('click', function(event) {
+        event.preventDefault();
+        let hiddenEl = event.target.nextElementSibling;
+        
+        if (hiddenEl.classList.contains('tooltip_active')) {
+            hiddenEl.classList.remove('tooltip_active');
+            return false;
+        }
 
-    let tooltips = document.getElementsByClassName('tooltip');
-    for (let item of tooltips) {
-        item.classList.remove('tooltip_active');
-    }
-
-    tooltip.classList.toggle('tooltip_active');
-}
-
-for (let i = 0; i < accentuatedPhrases.length; i++) {
-    accentuatedPhrases.item(i).addEventListener('click', showTip);
+        let activeEl = document.getElementsByClassName('tooltip_active')[0];
+        if (activeEl) {
+            activeEl.classList.toggle('tooltip_active');
+        }
+        hiddenEl.style.left = event.target.getBoundingClientRect().left + 'px';
+        hiddenEl.style.top = event.target.getBoundingClientRect().top + 20 + 'px';
+        hiddenEl.classList.toggle('tooltip_active');
+    });
 }
