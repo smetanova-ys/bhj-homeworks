@@ -1,6 +1,11 @@
 'use strict';
 
 let editor = document.getElementById('editor');
+let btn = document.createElement('button');
+btn.setAttribute('type', 'reset');
+btn.setAttribute('style', 'font-size: 14px; color: black; display: block;');
+btn.innerText = 'Очистить';
+editor.insertAdjacentElement('afterend', btn);
 
 function saveText() {
     if (editor.value !== '') {
@@ -8,10 +13,10 @@ function saveText() {
     }
 }
 
-function getText() {
-    editor.value = localStorage.getItem('text');
+function clear() {
+    editor.value = '';
+    localStorage.clear();
 }
 
-window.onload = () => editor.value = '';
-editor.addEventListener('focus', getText);
-editor.addEventListener('change', saveText);
+editor.addEventListener('input', saveText);
+btn.addEventListener('click', clear);
